@@ -100,7 +100,7 @@ Contributions are welcome! Please fork the repository and create a pull request 
 
 ## 📬 Contact
 
-Feel free to reach out if you have questions, suggestions, or feedback! Connect with me on [LinkedIn](https://www.linkedin.com/in/khushi/) or submit an issue here on GitHub.
+Feel free to reach out if you have questions, suggestions, or feedback! Connect with me on [LinkedIn](https://www.linkedin.com/in/khushir/) or submit an issue here on GitHub.
 
 ---
 
