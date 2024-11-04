@@ -62,9 +62,12 @@ To use Cognify, you’ll need:
 
 ## 🚀 Usage
 
-Run the script with the following command:
+Run either of the scripts with the following command:
 ```bash
-python cognify.py
+python main.py
+```
+```bash
+python3 main.py
 ```
 
 1. **Screen Capture**: The tool will automatically detect Japanese text appearing on screen.
