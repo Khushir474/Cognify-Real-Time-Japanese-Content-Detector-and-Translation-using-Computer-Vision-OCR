@@ -1,12 +1,11 @@
 # Cognify - Real-Time OCR and Translation Tool for Japanese Content 🎌
 
-Disclaimer: while this project is focused on detection and translation of Japanese text and subtitles, future improvements include making this tool omni-lingual.
+### Disclaimer: while this project is focused on detection and translation of Japanese text and subtitles, future improvements include making this tool omni-lingual.
 
 **Unlocking Japanese Content with Real-Time OCR Magic!**
 
 Cognify is a Python-based tool designed to help fans of Japanese content (anime, manga, etc.) overcome language barriers by offering real-time translation of Japanese text displayed on screen. By leveraging computer vision, Optical Character Recognition (OCR), and Googletrans, Cognify provides on-screen Japanese-to-English translations, allowing users to immerse themselves in Japanese media without the need for subtitles or dubbing.
 
----
 
 ## 🌟 Motivation
 
@@ -95,12 +94,6 @@ Currently, Cognify may struggle with:
 ## 🤝 Contributing
 
 Contributions are welcome! Please fork the repository and create a pull request for any new features, bug fixes, or improvements.
-
----
-
-## 📜 License
-
-This project is licensed under the MIT License. See the `LICENSE` file for more details.
 
 ---
 
