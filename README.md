@@ -49,7 +49,7 @@ To use Cognify, you’ll need:
    cd Cognify
    ```
 
-2. Install the necessary packages:
+2. Install the necessary packages: // Skip this step since all the requirements are in the main file included for now
    ```bash
    pip install -r requirements.txt
    ```
