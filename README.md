@@ -1,5 +1,5 @@
 # Cognify  
-**Real-Time Japanese Content Detector and Translation using Computer Vision OCR** 🎌
+### Real-Time Japanese Content Detector and Translation using Computer Vision OCR 🎌
 
 ### Disclaimer: while this project is focused on detection and translation of Japanese text and subtitles, future improvements include making this tool omni-lingual.
 
