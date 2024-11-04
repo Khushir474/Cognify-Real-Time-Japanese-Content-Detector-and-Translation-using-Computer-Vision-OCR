@@ -1,8 +1,6 @@
-Here's the README with added emojis and updated information about the Googletrans package:
+# Cognify - Real-Time OCR and Translation Tool for Japanese Content 🎌
 
----
-
-# 🎌 Cognify - Real-Time OCR and Translation Tool for Japanese Content 🎌
+Disclaimer: while this project is focused on detection and translation of Japanese text and subtitles, future improvements include making this tool omni-lingual.
 
 **Unlocking Japanese Content with Real-Time OCR Magic!**
 
