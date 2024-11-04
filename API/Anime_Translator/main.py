@@ -13,33 +13,35 @@
 
 # # Make sure you are connected to wifi
 
+# Open the code with workspace
+
 import cv2
 import pytesseract
 from googletrans import Translator
 import numpy as np
 import mss
 
-# Configure Tesseract executable path
+# Initializing req
 pytesseract.pytesseract.tesseract_cmd = '/opt/homebrew/Cellar/tesseract/5.4.1_1/bin/tesseract'
-
-# Initialize the translator
 translator = Translator()
+translated_text_prev = ".!~"
 
 # Capture the screen using mss
 with mss.mss() as sct:
-    monitor = {"top": 750, "left": 350, "width": 3024, "height": 100}
+    # modify the below reading window dimensions according to your requirements
+    monitor = {"top": 750, "left": 350, "width": 800, "height": 100}
     # "width": 800
 
     while True:
-        # Capture the screen
+        # Capturing the screen
         screenshot = np.array(sct.grab(monitor))
         frame = cv2.cvtColor(screenshot, cv2.COLOR_BGRA2BGR)
 
-        # Convert image to grayscale for better OCR performance
+        # Converting image to grayscale for better OCR performance
         gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
         
         # Apply some thresholding or blurring if needed
-        gray = cv2.threshold(gray, 150, 255, cv2.THRESH_BINARY)[1]
+        # gray = cv2.threshold(gray, 150, 255, cv2.THRESH_BINARY)[1]
 
         # Detect and extract Japanese text using Tesseract
         custom_config = r'--oem 3 --psm 6 -l jpn'  # Tesseract config for Japanese text
@@ -47,12 +49,24 @@ with mss.mss() as sct:
 
         # Translate the recognized Japanese text to English
         if recognized_text.strip():
-            translated_text = translator.translate(recognized_text, src='ja', dest='en').text
-            print(f"Recognized Text: {recognized_text}")
-            print(f"Translated Text: {translated_text}")
+            translated_text_curr = translator.translate(recognized_text, src='ja', dest='en').text
+            # print("prev",translated_text_prev)
+            # print("curr",translated_text_curr)
 
-            # Display the translation on the frame
-            cv2.putText(frame, translated_text, (50, 50), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 255, 0), 2)
+            if translated_text_prev == translated_text_curr:
+                continue
+
+            if translated_text_prev != translated_text_curr: # if new text is detected
+                print()
+                print()
+                print(f"Recognized Text: {recognized_text}")
+                print(f"Translated Text: {translated_text_curr}")
+                translated_text_prev = translated_text_curr
+            # else: # do i need this condition?
+                # continue
+            
+            # Uncomment code below if you want to display the translation on the frame
+            # cv2.putText(frame, translated_text_curr, (50, 50), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 255, 0), 2)
 
         # Show the video feed with translations
         cv2.imshow("Translated Screen", frame)
@@ -60,6 +74,8 @@ with mss.mss() as sct:
         # Long Press 'q' to quit
         if cv2.waitKey(1) & 0xFF == ord("q"):
             break
+            # exit()
     #     cv2.destroyAllWindows()
     # cv2.destroyAllWindows()
 cv2.destroyAllWindows()
+# exit()
