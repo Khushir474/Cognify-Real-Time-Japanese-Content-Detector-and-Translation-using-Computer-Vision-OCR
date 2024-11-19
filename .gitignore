@@ -1,0 +1,17 @@
+# Ignore credentials and config files
+credentials.json
+config.js
+*.key
+*.pem
+*.p12
+*.json.key
+service-account.json
+main.py
+
+# System files
+.DS_Store
+Thumbs.db
+
+# IDE files
+.vscode/
+.idea/

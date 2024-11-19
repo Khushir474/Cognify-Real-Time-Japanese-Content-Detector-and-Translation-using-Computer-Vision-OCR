@@ -1,0 +1,26 @@
+{
+  "manifest_version": 3,
+  "name": "Cognify - Japanese Text Translator",
+  "version": "1.0",
+  "description": "Real-time Japanese text translation on web pages",
+  "permissions": [
+    "activeTab",
+    "storage"
+  ],
+  "host_permissions": [
+    "https://*.googleapis.com/*"
+  ],
+  "action": {
+    "default_popup": "popup.html"
+  },
+  "content_scripts": [{
+    "matches": ["<all_urls>"],
+    "js": [
+      "config.js",
+      "content.js"
+    ]
+  }],
+  "background": {
+    "service_worker": "background.js"
+  }
+}

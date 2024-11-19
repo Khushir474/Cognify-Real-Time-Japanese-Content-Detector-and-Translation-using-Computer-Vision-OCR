@@ -1,3 +1,5 @@
+# Initial testing code, ignore this file
+
 # # to download tesseract OCR, you need to check which compiler is used 
 # # to build your python
 
