@@ -1,6 +1,8 @@
 # # to download tesseract OCR, you need to check which compiler is used 
 # # to build your python
 
+#  
+
 # # use the following code to check your compiler:
 # # import sys
 # # print(sys.version)
