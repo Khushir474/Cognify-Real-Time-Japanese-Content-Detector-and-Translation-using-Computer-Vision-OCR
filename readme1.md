@@ -92,7 +92,7 @@ There were a lot of tiny inconsistencies with the data. Since the dataset is ver
           - It doesn't expand the feature space like one-hot encoding
 
 ### Intermediary Procedures
-  **Test Train Split**  
+  * **Test Train Split**  
       - followed standard procedure, nothing fancy  
       - test_size=0.2, random_state=42  
   
