@@ -33,10 +33,14 @@
 ## Diving into the code
 ## Data Cleaning
 
-Dealt with:
+Dealt with:  
+
     * trailing spaces
+
     * inconsistent spacing
+
     * inconsistent typecase
+
     * "property_type"
         3 BHK Grand
         shop
