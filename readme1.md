@@ -96,14 +96,14 @@ There were a lot of tiny inconsistencies with the data. Since the dataset is ver
       - followed standard procedure, nothing fancy  
       - test_size=0.2, random_state=42  
   
-  **Normalization/Standardization of data**  
+  * **Normalization/Standardization of data**  
       - followed standard procedure, nothing fancy  
       - StandardScaler()  
 
-  **PCA**  
+  * **PCA**  
       - Not applicable as boosting algorithms take care of that automatically  
 
-  **SMOTE**  
+  * **SMOTE**  
       - Not applicable as it has the potential to mess up the data  
 
 
