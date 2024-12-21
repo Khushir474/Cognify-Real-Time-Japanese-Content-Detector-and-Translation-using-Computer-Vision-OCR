@@ -115,18 +115,18 @@ Dealt with:
 
 We are going to walk through the evolution of prediction for this dataset, just because it's fun to be the history man. The first, most rudimentary method for prediction is random guessing, but we're not going to do that. I underestimate grocery prices, so not transferring that skillset to here. The next simplest prediction is to compute the average; 9.5 million with a standard deviation of 10.19 million, which means that best case scenario im hitting the nail on the head with my prediction, and worst case I'm off by 10.19 million. This looks like the number of complaints Company X receives regarding its pricing model will remain the same, if not more. Next better solution we can work with is good old Linear Regression.
 
-  **Regression:**
-    * Linear Regression
-    * Ridge
-    * Lasso
-    * ElasticNet
+  **Regression:**  
+    * Linear Regression  
+    * Ridge  
+    * Lasso  
+    * ElasticNet  
 
-  **Boosting:**
-    * XGBoost (Naive, Early Stopping, Optuna, Bayesian Optimization)
-    * LightGBM (Naive, HyperOpt)
+  **Boosting:**  
+    * XGBoost (Naive, Early Stopping, Optuna, Bayesian Optimization)  
+    * LightGBM (Naive, HyperOpt)  
 
-  **XAI:**
-    * SHAP
+  **XAI:**  
+    * SHAP  
 
 
 
@@ -138,21 +138,21 @@ These metrics provide a comparison between the performance of **Linear Regressio
 Evaluation metrics for various models (non-exhaustive)
 
 Model | train RMSE | test RMSE | train MAE | test MAE | train R2 | test R2
-
+--- | --- | --- | --- |--- |--- |---
 Linear Regression | 13.0577 | 11.6693 | 8.7676 | 8.1645 | 0.9368 | 0.9284
-
+--- | --- | --- | --- |--- |--- |---
 ElasticNet | 17.5434 | 11.5441 | 9.4788 | 8.2004 | 0.886 | 0.93
-
+--- | --- | --- | --- |--- |--- |---
 Ridge Regression | 13.2256 | 11.6453 | 8.4831 | 8.3665 | 0.9352 | 0.9287
-
+--- | --- | --- | --- |--- |--- |---
 Lasso Regression | 14.3109 | 11.1304 | 8.3424 | 7.8864 | 0.9241 | 0.9349
-
+--- | --- | --- | --- |--- |--- |---
 XGBoost | 0.8723 | 14.7035 | 0.6676 | 8.4476 | 0.9997 | 0.8864
-
+--- | --- | --- | --- |--- |--- |---
 XGBoost Early Stopping | 16.7731 | 9.8524 | 5.5904 | 6.2469 | 0.8958 | 0.949
-
+--- | --- | --- | --- |--- |--- |---
 XGBoost Bayesian Optimized | 5.6425 | 6.7717 | 1.8256 | 5.0569 | 0.9882 | 0.9759
-
+--- | --- | --- | --- |--- |--- |---
 LightGBM with HyperOpt | 24.1874 | 12.311 | 10.6885 | 8.8205 | 0.7833 | 0.9204
 
 add more insights
