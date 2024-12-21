@@ -1,7 +1,7 @@
 
 ## Expectations
 
-    * End-to-end ML solution. Here’s what we’re looking for:
+    * End-to-end ML solution:
         * Data Cleaning
         * Feature Engineering
         * Train/Test Sampling
@@ -9,7 +9,7 @@
         * Training
         * Evaluation
         * Results Presentation
-        * Bonus: You’ll also have the chance to propose a deployment strategy for your model.
+        * Bonus: Propose a deployment strategy for the model
         
 
 ## Ideally
@@ -34,39 +34,39 @@
 ## Data Cleaning
 
 Dealt with:
- * trailing spaces
- * inconsistent spacing
- * inconsistent typecase
- * "property_type"
-    3 BHK Grand
-    shop
-    2+2 bhk
-    3+2bhk 
-    bhk, BHK
+    * trailing spaces
+    * inconsistent spacing
+    * inconsistent typecase
+    * "property_type"
+        3 BHK Grand
+        shop
+        2+2 bhk
+        3+2bhk 
+        bhk, BHK
  
- * "property_area_sq_ft"
-    1600 +
-    1181, 1364
-    1070 to 1200
+    * "property_area_sq_ft"
+        1600 +
+        1181, 1364
+        1070 to 1200
 
- * "price_in_lakhs"
-    string "NULL" -> np.NaN
+    * "price_in_lakhs"
+        string "NULL" -> np.NaN
 
- * Dropped the following columns
-    ['Sr. No.', 'Location', 'Price in Millions', 'Unnamed: 18']
-    dropped null rows
+    * Dropped the following columns
+        ['Sr. No.', 'Location', 'Price in Millions', 'Unnamed: 18']
+        dropped null rows
 
- * created amenity columns and converted to boolean
-    ['clubhouse', 'school_university_in_township',
-     'hospital_in_township', 'mall_in_township',
-     'park_jogging_track', 'swimming_pool', 'gym']
+    * created amenity columns and converted to boolean
+        ['clubhouse', 'school_university_in_township',
+        'hospital_in_township', 'mall_in_township',
+        'park_jogging_track', 'swimming_pool', 'gym']
 
- * cleaning "description"
-    tried TF-IDF
-    tried NER (slightly irrelevant)
-    tried Summarizer from huggingface (facebook/bart-large-cnn)
-    none were as effective as good old **NLTK Tokenization, Stop Word Removal, and Lemmatization**
-    Spacy and I have never had a stable relationship, always throws some dependency error out, so did not want to spend time on debugging that while I had good alternatives
+    * cleaning "description"
+        tried TF-IDF
+        tried NER (slightly irrelevant)
+        tried Summarizer from huggingface (facebook/bart-large-cnn)
+        none were as effective as good old **NLTK Tokenization, Stop Word Removal, and Lemmatization**
+        Spacy and I have never had a stable relationship, always throws some dependency error out, so did not want to spend time on debugging that while I had good alternatives
 
 
 
