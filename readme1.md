@@ -1,25 +1,4 @@
 
-
-## Ideally
- - 'sub_area' if there were more datapoitns, half of the less popular areas them would be converted to "other"
- - bigger data is a priority for better prediction, but do not want to use data synthesis (SMOTE, ADASYN) because it is not really reliable. Besides boosting algorithms (XGB) uses ensemble techniques that are resilient to class imbalances
- - with real time data, engineering features that are a function of price (currently commented) can be a good determinant
- - use dask / polars / pyspark for big data instead of pandas
- - i would like to remove many more outliers based on sub_area, which would increase our prediction accuracy. But for now, that would significantly reduce the dataset size which is not ideal.
- - if we have a big enough data, modeling predictions for each sub-area individually would provide a much better solution
-
-
-
-
-## Data Versions
- - original_data : initial, unclean dataset
- - cleaned_data : after data cleaning function
- - outlier_na_free : removed outliers and null columns/samples
- - featured_data : data after feature engineering
-
-
-
-
 ## Expectations
 
     * End-to-end ML solution. Here’s what we’re looking for:
@@ -33,40 +12,56 @@
         * Bonus: You’ll also have the chance to propose a deployment strategy for your model.
         
 
+## Ideally
+ - 'sub_area' would be further transformed if there were more datapoitns, half of the less popular areas them would be converted to "other"
+ - More data is a priority for better prediction, but do not want to use data synthesis (SMOTE, ADASYN) because it is not really reliable. Besides, boosting algorithms (XGB) use ensemble techniques that are resilient to class imbalances
+ - With real time data, engineering features that are a function of price (currently commented) can be a good determinant of price
+ - Use dask / polars / pyspark for big data instead of pandas
+ - Remove many more outliers based on 'sub_area' would increase our prediction accuracy. But for now, that would significantly reduce the dataset size which is not ideal.
+ - With a big enough data, modeling predictions for each sub-area individually would provide a much better solution
 
 
+
+## Data Versions
+ - original_data : initial, unclean dataset
+ - cleaned_data : after data cleaning function
+ - outlier_na_free : removed outliers and null columns/samples
+ - featured_data : data after feature engineering
+
+
+
+## Diving into the code
 ## Data Cleaning
 
 Dealt with:
-- trailing spaces
-- inconsistent spacing
-- inconsistent typecase
-
-- "property_type"
+ * trailing spaces
+ * inconsistent spacing
+ * inconsistent typecase
+ * "property_type"
     3 BHK Grand
     shop
     2+2 bhk
     3+2bhk 
     bhk, BHK
-
-- "property_area_sq_ft"
+ 
+ * "property_area_sq_ft"
     1600 +
     1181, 1364
     1070 to 1200
 
-- "price_in_lakhs"
+ * "price_in_lakhs"
     string "NULL" -> np.NaN
 
-- Dropped the following columns
+ * Dropped the following columns
     ['Sr. No.', 'Location', 'Price in Millions', 'Unnamed: 18']
     dropped null rows
 
-- created amenity columns and converted to boolean
+ * created amenity columns and converted to boolean
     ['clubhouse', 'school_university_in_township',
      'hospital_in_township', 'mall_in_township',
      'park_jogging_track', 'swimming_pool', 'gym']
 
-- cleaning "description"
+ * cleaning "description"
     tried TF-IDF
     tried NER (slightly irrelevant)
     tried Summarizer from huggingface (facebook/bart-large-cnn)
