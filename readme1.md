@@ -33,64 +33,67 @@
 # Diving into the code
 ## Data Cleaning
 
-Dealt with:  
+There were a lot of tiny inconsistencies with the data. Since the dataset is very, very small, it is of grave importance to clean every single datapoint to minimize the number of samples dropped. 
 
-    * trailing spaces
+  * trailing spaces
 
-    * inconsistent spacing
+  * inconsistent spacing
 
-    * inconsistent typecase
+  * inconsistent typecase
 
-    * "property_type"
-        3 BHK Grand
-        shop
-        2+2 bhk
-        3+2bhk 
-        bhk, BHK
- 
-    * "property_area_sq_ft"
-        1600 +
-        1181, 1364
-        1070 to 1200
+  * "property_type": converted the below values to a single number  
+      2bhk  
+      3 BHK Grand  
+      shop  
+      2+2 bhk  
+      3+2bhk  
+      bhk, BHK
 
-    * "price_in_lakhs"
-        string "NULL" -> np.NaN
+  * "property_area_sq_ft": converted the below values to a single number  
+      1600 +  
+      1181, 1364  
+      1070 to 1200  
 
-    * Dropped the following columns
-        ['Sr. No.', 'Location', 'Price in Millions', 'Unnamed: 18']
-        dropped null rows
+  * "price_in_lakhs"
+      string "NULL" -> np.NaN
 
-    * created amenity columns and converted to boolean
-        ['clubhouse', 'school_university_in_township',
-        'hospital_in_township', 'mall_in_township',
-        'park_jogging_track', 'swimming_pool', 'gym']
+  * Renamed columns with best practise rules
 
-    * cleaning "description"
-        tried TF-IDF
-        tried NER (slightly irrelevant)
-        tried Summarizer from huggingface (facebook/bart-large-cnn)
-        none were as effective as good old **NLTK Tokenization, Stop Word Removal, and Lemmatization**
-        Never had a stable relationship with Spacy, always throws some dependency error out, so chose to spend time on other better alternatives
-
+  * Dropped the following columns
+      ['sr_no', 'location', 'price_in_millions']  
+      dropped null rows
 
 
 
 ## Feature Engineering
 
-    * added in a ZIP code column, but has a very low -ve correlation with price (-0.094)
-        ![Alt text](image.png)
+  * Added in a ZIP code column, but has a very low -ve correlation with price (-0.094)
+      ![Alt text](image.png)
 
-    * however, zipcode binned has a comparatively higher positive correlation with price (0.035)
+  * However, zipcode binned has a comparatively higher positive correlation with price (0.035)
 
-    * created a scoring column
-        checked for the existance of certain words that I (and my best bud Claude) thought were important to defend the pricing of a listing, and converted that to a score which would be used in one of the prediction models to follow
+  * Created amenity columns and converted to boolean
+      ['clubhouse', 'school_university_in_township',
+      'hospital_in_township', 'mall_in_township',
+      'park_jogging_track', 'swimming_pool', 'gym']
 
-    * Class Encoding
-        Choosing Target Encoding because:
-            * It handles high cardinality well
-            * It captures the relationship between categories and price
-            * It produces meaningful numerical values
-            * It doesn't expand the feature space like one-hot encoding
+  * Cleaning "description"
+      tried TF-IDF  
+      tried NER (slightly irrelevant)  
+      tried Summarizer from huggingface (facebook/bart-large-cnn)  
+      none were as effective as good old **NLTK Tokenization, Stop Word Removal, and Lemmatization**  
+      Never had a stable relationship with Spacy, always throws some dependency error out, so chose to spend time on other better alternatives
+
+  * Created a scoring column
+      checked for the existance of certain words that I thought were important to defend the pricing of a listing, and converted that to a score which would be used in one of the prediction models to follow
+
+  * Class Encoding
+      Considerations: Label, One-Hot, Target Encoding
+      Choosing Target Encoding because:
+          * It handles high cardinality well
+          * It captures the relationship between categories and price
+          * It produces meaningful numerical values
+          * It doesn't expand the feature space like one-hot encoding
 
 ## Intermediary Procedures
   **Test Train Split**  
