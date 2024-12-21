@@ -113,17 +113,17 @@ There were a lot of tiny inconsistencies with the data. Since the dataset is ver
 
 We are going to walk through the evolution of prediction for this dataset, just because it's fun to be the history man. The first, most rudimentary method for prediction is random guessing, but we're not going to do that. I underestimate grocery prices, so not transferring that skillset to here. The next simplest prediction is to compute the average; 9.5 million with a standard deviation of 10.19 million, which means that best case scenario im hitting the nail on the head with my prediction, and worst case I'm off by 10.19 million. This looks like the number of complaints Company X receives regarding its pricing model will remain the same, if not more. Next better solution we can work with is good old Linear Regression.
 
-  **Regression:**  
+  * **Regression:**  
       * Linear Regression  
       * Ridge  
       * Lasso  
       * ElasticNet  
 
-  **Boosting:**  
+  * **Boosting:**  
       * XGBoost (Naive, Early Stopping, Optuna, Bayesian Optimization)  
       * LightGBM (Naive, HyperOpt)  
 
-  **XAI:**  
+  * **XAI:**  
       * SHAP  
 
 
