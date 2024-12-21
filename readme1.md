@@ -1,7 +1,7 @@
 
 ## Expectations
 
-    * End-to-end ML solution:
+     End-to-end ML solution:
         * Data Cleaning
         * Feature Engineering
         * Train/Test Sampling
@@ -23,15 +23,15 @@
 
 
 ## Data Versions
-    * original_data : initial, unclean dataset
-    * cleaned_data : after data cleaning function
-    * outlier_na_free : removed outliers and null columns/samples
-    * featured_data : data after feature engineering
+    original_data : initial, unclean dataset
+    cleaned_data : after data cleaning function
+    outlier_na_free : removed outliers and null columns/samples
+    featured_data : data after feature engineering
 
 
 
-# Diving into the code
-## Data Cleaning
+## Diving into the code
+### Data Cleaning
 
 There were a lot of tiny inconsistencies with the data. Since the dataset is very, very small, it is of grave importance to clean every single datapoint to minimize the number of samples dropped. 
 
@@ -42,30 +42,30 @@ There were a lot of tiny inconsistencies with the data. Since the dataset is ver
   * inconsistent typecase
 
   * "property_type": converted the below values to a single number  
-      2bhk  
-      3 BHK Grand  
-      shop  
-      2+2 bhk  
-      3+2bhk  
-      bhk, BHK
+      - 2bhk  
+      - 3 BHK Grand  
+      - shop  
+      - 2+2 bhk  
+      - 3+2bhk  
+      - bhk, BHK
 
   * "property_area_sq_ft": converted the below values to a single number  
-      1600 +  
-      1181, 1364  
-      1070 to 1200  
+      - 1600 +  
+      - 1181, 1364  
+      - 1070 to 1200  
 
   * "price_in_lakhs"
-      string "NULL" -> np.NaN
+      - string "NULL" -> np.NaN
 
   * Renamed columns with best practise rules
 
   * Dropped the following columns  
-      ['sr_no', 'location', 'price_in_millions']  
-      dropped null rows
+      - ['sr_no', 'location', 'price_in_millions']  
+      - dropped null rows
 
 
 
-## Feature Engineering
+### Feature Engineering
 
   * Added in a ZIP code column, but has a very low -ve correlation with price (-0.094)
       ![Alt text](image.png)
@@ -86,30 +86,30 @@ There were a lot of tiny inconsistencies with the data. Since the dataset is ver
   * Class Encoding
       - Considerations: Label, One-Hot, Target Encoding
       - Choosing Target Encoding because:
-          * It handles high cardinality well
-          * It captures the relationship between categories and price
-          * It produces meaningful numerical values
-          * It doesn't expand the feature space like one-hot encoding
+          - It handles high cardinality well
+          - It captures the relationship between categories and price
+          - It produces meaningful numerical values
+          - It doesn't expand the feature space like one-hot encoding
 
-## Intermediary Procedures
-  **Test Train Split**  
-      - followed standard procedure, nothing fancy  
-      - test_size=0.2, random_state=42  
-  
-  **Normalization/Standardization of data**  
-    - followed standard procedure, nothing fancy  
-    - StandardScaler()  
+### Intermediary Procedures
+    **Test Train Split**  
+        - followed standard procedure, nothing fancy  
+        - test_size=0.2, random_state=42  
+    
+    **Normalization/Standardization of data**  
+        - followed standard procedure, nothing fancy  
+        - StandardScaler()  
 
-  **PCA**  
-    - Not applicable as boosting algorithms take care of that automatically  
+    **PCA**  
+        - Not applicable as boosting algorithms take care of that automatically  
 
-  **SMOTE**  
-    - Not applicable as it has the potential to mess up the data  
-
-
+    **SMOTE**  
+        - Not applicable as it has the potential to mess up the data  
 
 
-## Modelling
+
+
+### Modelling
 
 We are going to walk through the evolution of prediction for this dataset, just because it's fun to be the history man. The first, most rudimentary method for prediction is random guessing, but we're not going to do that. I underestimate grocery prices, so not transferring that skillset to here. The next simplest prediction is to compute the average; 9.5 million with a standard deviation of 10.19 million, which means that best case scenario im hitting the nail on the head with my prediction, and worst case I'm off by 10.19 million. This looks like the number of complaints Company X receives regarding its pricing model will remain the same, if not more. Next better solution we can work with is good old Linear Regression.
 
@@ -129,7 +129,7 @@ We are going to walk through the evolution of prediction for this dataset, just 
 
 
 
-## Evaluation
+### Evaluation
 
 These metrics provide a comparison between the performance of **Regression** and **Boosting** models. Here's what they indicate:
 
@@ -151,17 +151,17 @@ add more insights
 
 ### Improvements
 
-- using AI for parsing 'description' and coming up with a better score
-- code reorganization
-- more data -> better assessment of the model
-- would recommend grabbing lat-long of property on business-end
-- historical data would be tremendous in price prediction
-- better way of categorical encoding ['sub_area', 'company_name', 'township_society_name']
-- 
+    - using AI for parsing 'description' and coming up with a better score
+    - code reorganization
+    - more data -> better assessment of the model
+    - would recommend grabbing lat-long of property on business-end
+    - historical data would be tremendous in price prediction
+    - better way of categorical encoding ['sub_area', 'company_name', 'township_society_name']
+    - 
 
 
 
-Deployment:
-- MLFlow on Databrics is open source - for tracking and securing training runs for machine learning and deep learning models.
-- Unity Catalog provides centralized model governance, cross-workspace access, lineage, and deployment.
-- 
+### Deployment:
+    - MLFlow on Databrics is open source - for tracking and securing training runs for machine learning and deep learning models.
+    - Unity Catalog provides centralized model governance, cross-workspace access, lineage, and deployment.
+    - 
