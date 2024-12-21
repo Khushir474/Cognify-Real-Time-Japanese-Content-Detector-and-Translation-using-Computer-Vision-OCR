@@ -92,19 +92,19 @@ There were a lot of tiny inconsistencies with the data. Since the dataset is ver
           - It doesn't expand the feature space like one-hot encoding
 
 ### Intermediary Procedures
-    **Test Train Split**  
-        - followed standard procedure, nothing fancy  
-        - test_size=0.2, random_state=42  
-    
-    **Normalization/Standardization of data**  
-        - followed standard procedure, nothing fancy  
-        - StandardScaler()  
+  **Test Train Split**  
+      - followed standard procedure, nothing fancy  
+      - test_size=0.2, random_state=42  
+  
+  **Normalization/Standardization of data**  
+      - followed standard procedure, nothing fancy  
+      - StandardScaler()  
 
-    **PCA**  
-        - Not applicable as boosting algorithms take care of that automatically  
+  **PCA**  
+      - Not applicable as boosting algorithms take care of that automatically  
 
-    **SMOTE**  
-        - Not applicable as it has the potential to mess up the data  
+  **SMOTE**  
+      - Not applicable as it has the potential to mess up the data  
 
 
 
@@ -114,17 +114,17 @@ There were a lot of tiny inconsistencies with the data. Since the dataset is ver
 We are going to walk through the evolution of prediction for this dataset, just because it's fun to be the history man. The first, most rudimentary method for prediction is random guessing, but we're not going to do that. I underestimate grocery prices, so not transferring that skillset to here. The next simplest prediction is to compute the average; 9.5 million with a standard deviation of 10.19 million, which means that best case scenario im hitting the nail on the head with my prediction, and worst case I'm off by 10.19 million. This looks like the number of complaints Company X receives regarding its pricing model will remain the same, if not more. Next better solution we can work with is good old Linear Regression.
 
   **Regression:**  
-    * Linear Regression  
-    * Ridge  
-    * Lasso  
-    * ElasticNet  
+      * Linear Regression  
+      * Ridge  
+      * Lasso  
+      * ElasticNet  
 
   **Boosting:**  
-    * XGBoost (Naive, Early Stopping, Optuna, Bayesian Optimization)  
-    * LightGBM (Naive, HyperOpt)  
+      * XGBoost (Naive, Early Stopping, Optuna, Bayesian Optimization)  
+      * LightGBM (Naive, HyperOpt)  
 
   **XAI:**  
-    * SHAP  
+      * SHAP  
 
 
 
@@ -162,6 +162,6 @@ add more insights
 
 
 ### Deployment:
-    - MLFlow on Databrics is open source - for tracking and securing training runs for machine learning and deep learning models.
+    - MLFlow on Databrics is open source - for tracking and securing training runs for machine learning and deep learning models.  
     - Unity Catalog provides centralized model governance, cross-workspace access, lineage, and deployment.
     - 
