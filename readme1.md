@@ -13,20 +13,20 @@
         
 
 ## Ideally
- - 'sub_area' would be further transformed if there were more datapoitns, half of the less popular areas them would be converted to "other"
- - More data is a priority for better prediction, but do not want to use data synthesis (SMOTE, ADASYN) because it is not really reliable. Besides, boosting algorithms (XGB) use ensemble techniques that are resilient to class imbalances
- - With real time data, engineering features that are a function of price (currently commented) can be a good determinant of price
- - Use dask / polars / pyspark for big data instead of pandas
- - Remove many more outliers based on 'sub_area' would increase our prediction accuracy. But for now, that would significantly reduce the dataset size which is not ideal.
- - With a big enough data, modeling predictions for each sub-area individually would provide a much better solution
+    * 'sub_area' would be further transformed if there were more datapoitns, half of the less popular areas them would be converted to "other"
+    * More data is a priority for better prediction, but do not want to use data synthesis (SMOTE, ADASYN) because it is not really reliable. Besides, boosting algorithms (XGB) use ensemble techniques that are resilient to class imbalances
+    * With real time data, engineering features that are a function of price (currently commented) can be a good determinant of price
+    * Use dask / polars / pyspark for big data instead of pandas
+    * Remove many more outliers based on 'sub_area' would increase our prediction accuracy. But for now, that would significantly reduce the dataset size which is not ideal.
+    * With a big enough data, modeling predictions for each sub-area individually would provide a much better solution
 
 
 
 ## Data Versions
- - original_data : initial, unclean dataset
- - cleaned_data : after data cleaning function
- - outlier_na_free : removed outliers and null columns/samples
- - featured_data : data after feature engineering
+    * original_data : initial, unclean dataset
+    * cleaned_data : after data cleaning function
+    * outlier_na_free : removed outliers and null columns/samples
+    * featured_data : data after feature engineering
 
 
 
@@ -77,35 +77,35 @@ Dealt with:
 
 ## Feature Engineering
 
-- added in a ZIP code column, but has a very low -ve correlation with price (-0.094)
-    ![Alt text](image.png)
+    * added in a ZIP code column, but has a very low -ve correlation with price (-0.094)
+        ![Alt text](image.png)
 
-- however, zipcode binned has a comparatively higher positive correlation with price (0.035)
+    * however, zipcode binned has a comparatively higher positive correlation with price (0.035)
 
-- created a scoring column
-    checked for the existance of certain words that I (and my best bud Claude) thought were important to defend the pricing of a listing, and converted that to a score which would be used in one of the prediction models to follow
+    * created a scoring column
+        checked for the existance of certain words that I (and my best bud Claude) thought were important to defend the pricing of a listing, and converted that to a score which would be used in one of the prediction models to follow
 
-- Class Encoding
-    Choosing Target Encoding because:
-        * It handles high cardinality well
-        * It captures the relationship between categories and price
-        * It produces meaningful numerical values
-        * It doesn't expand the feature space like one-hot encoding
+    * Class Encoding
+        Choosing Target Encoding because:
+            * It handles high cardinality well
+            * It captures the relationship between categories and price
+            * It produces meaningful numerical values
+            * It doesn't expand the feature space like one-hot encoding
 
 ## Intermediary Procedures
-  **Test Train Split**
-    - followed standard procedure, nothing fancy
-    - test_size=0.2, random_state=42
+  **Test Train Split**  
+    - followed standard procedure, nothing fancy  
+    - test_size=0.2, random_state=42  
   
-  **Normalization/Standardization of data**
-    - followed standard procedure, nothing fancy
-    - StandardScaler()
+  **Normalization/Standardization of data**  
+    - followed standard procedure, nothing fancy  
+    - StandardScaler()  
 
-  **PCA**
-    - Not applicable as boosting algorithms take care of that automatically
+  **PCA**  
+    - Not applicable as boosting algorithms take care of that automatically  
 
-  **SMOTE**
-    - Not applicable as it has the potential to mess up the data
+  **SMOTE**  
+    - Not applicable as it has the potential to mess up the data  
 
 
 
@@ -132,9 +132,9 @@ We are going to walk through the evolution of prediction for this dataset, just 
 
 ## Evaluation
 
-These metrics provide a comparison between the performance of **Linear Regression** and **XGBoost** models. Here's what they indicate:
+These metrics provide a comparison between the performance of **Regression** and **Boosting** models. Here's what they indicate:
 
-Evaluation metrics for various models (non-exhaustive)
+**Evaluation metrics for various models (non-exhaustive):**
 
 Model | train RMSE | test RMSE | train MAE | test MAE | train R2 | test R2
 --- | --- | --- | --- |--- |--- |---
