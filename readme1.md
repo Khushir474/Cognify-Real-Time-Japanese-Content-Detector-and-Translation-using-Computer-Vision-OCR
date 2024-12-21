@@ -59,7 +59,7 @@ There were a lot of tiny inconsistencies with the data. Since the dataset is ver
 
   * Renamed columns with best practise rules
 
-  * Dropped the following columns
+  * Dropped the following columns  
       ['sr_no', 'location', 'price_in_millions']  
       dropped null rows
 
@@ -72,24 +72,20 @@ There were a lot of tiny inconsistencies with the data. Since the dataset is ver
 
   * However, zipcode binned has a comparatively higher positive correlation with price (0.035)
 
-  * Created amenity columns and converted to boolean
-      ['clubhouse', 'school_university_in_township',
-      'hospital_in_township', 'mall_in_township',
-      'park_jogging_track', 'swimming_pool', 'gym']
+  * Created amenity columns and converted to boolean  
+      ['clubhouse', 'school_university_in_township', 'hospital_in_township', 'mall_in_township', 'park_jogging_track', 'swimming_pool', 'gym']
 
   * Cleaning "description"
-      tried TF-IDF  
-      tried NER (slightly irrelevant)  
-      tried Summarizer from huggingface (facebook/bart-large-cnn)  
-      none were as effective as good old **NLTK Tokenization, Stop Word Removal, and Lemmatization**  
-      Never had a stable relationship with Spacy, always throws some dependency error out, so chose to spend time on other better alternatives
+      - Tried TF-IDF, NER (slightly irrelevant) and Summarizer from huggingface (facebook/bart-large-cnn)  
+      - None were as effective as good ol' **NLTK Tokenization, Stop Word Removal, and Lemmatization**  
+      - Never had a stable relationship with Spacy, always throws some dependency error out, so chose to spend time on other better alternatives
 
   * Created a scoring column
-      checked for the existance of certain words that I thought were important to defend the pricing of a listing, and converted that to a score which would be used in one of the prediction models to follow
+      - checked for the existance of certain words that I thought were important to defend the pricing of a listing, and - converted that to a score which would be used in one of the prediction models to follow
 
   * Class Encoding
-      Considerations: Label, One-Hot, Target Encoding
-      Choosing Target Encoding because:
+      - Considerations: Label, One-Hot, Target Encoding
+      - Choosing Target Encoding because:
           * It handles high cardinality well
           * It captures the relationship between categories and price
           * It produces meaningful numerical values
@@ -97,8 +93,8 @@ There were a lot of tiny inconsistencies with the data. Since the dataset is ver
 
 ## Intermediary Procedures
   **Test Train Split**  
-    - followed standard procedure, nothing fancy  
-    - test_size=0.2, random_state=42  
+      - followed standard procedure, nothing fancy  
+      - test_size=0.2, random_state=42  
   
   **Normalization/Standardization of data**  
     - followed standard procedure, nothing fancy  
