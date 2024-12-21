@@ -138,8 +138,8 @@ These metrics provide a comparison between the performance of **Linear Regressio
 Evaluation metrics for various models (non-exhaustive)
 
 Model | train RMSE | test RMSE | train MAE | test MAE | train R2 | test R2
-Linear Regression | 13.0577 | 11.6693 | 8.7676 | 8.1645 | 0.9368 | 0.9284
 --- | --- | --- | --- |--- |--- |---
+Linear Regression | 13.0577 | 11.6693 | 8.7676 | 8.1645 | 0.9368 | 0.9284
 ElasticNet | 17.5434 | 11.5441 | 9.4788 | 8.2004 | 0.886 | 0.93
 --- | --- | --- | --- |--- |--- |---
 Ridge Regression | 13.2256 | 11.6453 | 8.4831 | 8.3665 | 0.9352 | 0.9287
