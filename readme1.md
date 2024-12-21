@@ -13,12 +13,12 @@
         
 
 ## Ideally
-    * 'sub_area' would be further transformed if there were more datapoitns, half of the less popular areas them would be converted to "other"
-    * More data is a priority for better prediction, but do not want to use data synthesis (SMOTE, ADASYN) because it is not really reliable. Besides, boosting algorithms (XGB) use ensemble techniques that are resilient to class imbalances
-    * With real time data, engineering features that are a function of price (currently commented) can be a good determinant of price
-    * Use dask / polars / pyspark for big data instead of pandas
-    * Remove many more outliers based on 'sub_area' would increase our prediction accuracy. But for now, that would significantly reduce the dataset size which is not ideal.
-    * With a big enough data, modeling predictions for each sub-area individually would provide a much better solution
+    - 'sub_area' would be further transformed if there were more datapoitns, half of the less popular areas them would be converted to "other"
+    - More data is a priority for better prediction, but do not want to use data synthesis (SMOTE, ADASYN) because it is not really reliable. Besides, boosting algorithms (XGB) use ensemble techniques that are resilient to class imbalances
+    - With real time data, engineering features that are a function of price (currently commented) can be a good determinant of price
+    - Use dask / polars / pyspark for big data instead of pandas
+    - Remove many more outliers based on 'sub_area' would increase our prediction accuracy. But for now, that would significantly reduce the dataset size which is not ideal.
+    - With a big enough data, modeling predictions for each sub-area individually would provide a much better solution
 
 
 
@@ -30,7 +30,7 @@
 
 
 
-## Diving into the code
+# Diving into the code
 ## Data Cleaning
 
 Dealt with:  
@@ -70,7 +70,7 @@ Dealt with:
         tried NER (slightly irrelevant)
         tried Summarizer from huggingface (facebook/bart-large-cnn)
         none were as effective as good old **NLTK Tokenization, Stop Word Removal, and Lemmatization**
-        Spacy and I have never had a stable relationship, always throws some dependency error out, so did not want to spend time on debugging that while I had good alternatives
+        Never had a stable relationship with Spacy, always throws some dependency error out, so chose to spend time on other better alternatives
 
 
 
